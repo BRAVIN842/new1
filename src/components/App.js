@@ -1,10 +1,10 @@
-// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route,  } from 'react-router-dom';
 import Navbar from './Navbar';
 import Category from './Category';
 import Cart from './Cart';
 import data from './data';
+import HomePage from './Homepage';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -22,8 +22,9 @@ function App() {
       <div>
         <Navbar />
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route
-            path="/"
+            path="/electronic"
             element={<Category category="electronic" data={data.electronic} addToCart={addToCart} />}
           />
           <Route
@@ -31,8 +32,8 @@ function App() {
             element={<Category category="fashion" data={data.fashion} addToCart={addToCart} />}
           />
           <Route
-            path="/motors"
-            element={<Category category="motors" data={data.motors} addToCart={addToCart} />}
+            path="/gaming"
+            element={<Category category="gaming" data={data.gaming} addToCart={addToCart} />}
           />
           <Route
             path="/sports"

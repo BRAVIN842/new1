@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+const Navbar = ({ user, onLogout }) => {
   return (
-    <nav>
+    <nav id='nav'>
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-        <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
           <Link to="/electronic">Electronic</Link>
@@ -26,9 +26,20 @@ function Navbar() {
         <li>
           <Link to="/cart">Cart</Link>
         </li>
+        {user ? (
+          <li>
+            <span style={{ cursor: 'pointer' }} onClick={onLogout}>
+              Logout
+            </span>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;
